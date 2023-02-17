@@ -10,10 +10,7 @@ function Product(props) {
        <div className="col-12 col-sm-12 col-md-4" >
            <div className="product" >
                <div className="product-img">
-                   <img
-                   src= {props.photo}
-                   className="img-fluid d-block mx-auto"
-                   alt = {props.photo}/>
+                   <img src= {props.photo} className="img-fluid d-block mx-auto" alt = {props.photo}/>
                </div>
                <div className="product-name-cost">
                    <h5 className="float-left gold">{props.name} </h5>
