@@ -29,7 +29,6 @@ function ProductList(props) {
                 <div className="row">
                 {props.productList.map((product) =>     //Loop through the product list passed down from ProductControl component
                     <  Product  
-                    whenProductIsClicked = {props.onProductSelection}
                     photo = {product.photo}
                     name = {product.name}
                     price = {product.price}
