@@ -36,7 +36,7 @@ function NewProductForm(props) {
                     <div className="form-input-material">
                         <input type = 'text'
                             name = 'name'
-                            placeholder = ' '
+                            placeholder = ''
                             className = 'form-control-material'
                             autoComplete="off"
                             id = 'name'
@@ -44,20 +44,13 @@ function NewProductForm(props) {
                         <label htmlFor="name"> Name</label>
                     </div>
                     <div className="form-input-material">
-                        <input type = 'text'
-                            name = 'price'
-                            placeholder = ' '
-                            className = 'form-control-material'
-                            autoComplete="off"
-                            id = 'price'
-                            required
-                        />
+                        <input type = 'text' name = 'price' placeholder = '' className = 'form-control-material' autoComplete="off" id = 'price' required/>
                         <label htmlFor="price"> Price</label>
                     </div>
                     <div className="form-input-material">
                         <textarea type = 'text'
                             name = 'description'
-                            placeholder = ' '
+                            placeholder = ''
                             className = 'form-control-material'
                             autoComplete="off"
                             id = 'description'
@@ -68,7 +61,7 @@ function NewProductForm(props) {
                     <div className="form-input-material">
                         <input type = 'number'
                             name = 'quantity'
-                            placeholder = ' '
+                            placeholder = ''
                             className = 'form-control-material'
                             autoComplete="off"
                             id = 'quantity'
