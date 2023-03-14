@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+//component imports
 import AddProduct from './AddProduct';
 import ProductList from './ProductList';
 import NewProductForm from './NewProductForm';
@@ -59,9 +61,18 @@ class ProductControl extends Component {
         super(props);
         this.state ={
             productFormVisible: false,
-            actualProductList: actualProductList,
+            actualProductList: [],
             selectedProduct: null
         }
+    }
+    componentDidMount(){
+        axios.get('http://localhost:5000/products')
+        .then(res =>{
+            console.log(res)
+            this.setState({
+                actualProductList: res.data
+            })
+        })
     }
 
     handleClick = ()=>{
