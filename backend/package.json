@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "songa": "nodemon server.js",
+    "server": "nodemon server.js",
     "client": "npm start --prefix  ../client",
-    "dev": "concurrently \"npm run songa\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "David Muthui",
   "license": "ISC",
