@@ -8,9 +8,9 @@ const Product = require('../models/Product');
 // @desc Get ALL products
 router.get('/', (req,res)=>{
    // Fetch all products from database
-   Product.find({}, (error, products)=>{
+   Product.find({}, (error, product)=>{
        if (error) console.log(error)
-       res.json(products)
+       res.json(product)
    })
 })
 

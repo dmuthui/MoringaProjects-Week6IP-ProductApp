@@ -9,20 +9,18 @@ import ProductDetail from './ProductDetail';
 import EditProductForm from './EditProductForm';
 
 
-
-
 class ProductControl extends Component {
     constructor(props){
         super(props);
         this.state ={
             productFormVisible: false,
-            actualProductList: [],
+            actualProductList: [], 
             selectedProduct: null,
             editProduct: false
         }
     }
     componentDidMount(){
-        axios.get('http://localhost:5000/products')
+        axios.get('http://localhost:5000/product')
         .then(res =>{
             console.log(res.data)
             this.setState({
@@ -56,8 +54,8 @@ class ProductControl extends Component {
 
 
     // Method to handle adding a new product
-    handleAddingNewProduct = (newProduct) =>{  
-        axios.post('http://localhost:5000/products', newProduct)
+    handleAddingNewProduct = (newProduct) =>{   
+        axios.post('http://localhost:5000/product', newProduct)
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
         this.setState({
@@ -65,7 +63,7 @@ class ProductControl extends Component {
         })
     };
     handleDeletingProduct = (id) =>{
-        axios.delete('http://localhost:5000/products/'+id)
+        axios.delete('http://localhost:5000/product/'+id)
             .then(res => console.log(res.data))
             .catch((error) =>{
                 console.log(error)
@@ -84,9 +82,9 @@ class ProductControl extends Component {
     }
     handleEditingProduct = (editedProduct) =>{
 
-        axios.put('http://localhost:5000/products/' + this.state.selectedProduct._id, editedProduct)
+        axios.put('http://localhost:5000/product/' + this.state.selectedProduct._id, editedProduct)
             .then(res =>console.log(res.data))
-       
+        
         this.setState({
             editProduct: false,
             formVisibleOnPage: false
@@ -96,7 +94,6 @@ class ProductControl extends Component {
     render() {
         let currentVisibleState = null;
         let buttonText = null
-        
         if(this.state.editProduct){
             currentVisibleState = <EditProductForm  product ={this.state.selectedProduct} onEditProduct = {this.handleEditingProduct} />
             buttonText = "Back to Product Detail "
@@ -110,14 +107,13 @@ class ProductControl extends Component {
             currentVisibleState = <ProductList productList = {this.state.actualProductList} onProductSelection = {this.handleChangingSelectedProduct} /> // Because a user will actually be clicking on the Product in the Product component, we will need to pass our new handleChangingSelectedProduct method as a prop.
             buttonText = 'Add A Product'
         }
-        
         return (
             <React.Fragment>
 
                 <AddProduct 
                 whenButtonClicked = {this.handleClick}
                 buttonText = {buttonText} />
-               
+                
                 {currentVisibleState}
             </React.Fragment>
         )
