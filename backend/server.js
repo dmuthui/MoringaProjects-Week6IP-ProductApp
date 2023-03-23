@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-// mongoose.set('StrictQuery', true);
+
 
 const productRoute = require('./routes/productRoutes');
 const uploadFiles = require('./routes/uploadfiles');
@@ -13,8 +13,8 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-//DB config
 
+//DB config
 const MONGODB_URI= process.env.MONGODB_URI ||
 
 require('./config').mongoDB_URI
@@ -23,8 +23,8 @@ require('./config').mongoDB_URI
 
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true  })
 
-// Check Connection
 
+// Check Connection
 let db = mongoose.connection;
 
 db.once('open', ()=>{
@@ -39,22 +39,22 @@ db.on('error', (error)=>{
 
    console.log(error);
 
+mongoose.set('StrictQuery', true);
    // Use Routes
-
  })
  app.use('/product', productRoute)  //new code
  app.use(uploadFiles);
  
 //  // Serve our static assets if in production
-// if(process.env.NODE_ENV === 'production'){
-//    // set a static folder
-//    app.use(express.static('client/build'));
+if(process.env.NODE_ENV === 'production'){
+   // set a static folder
+   app.use(express.static('client/build'));
 
-//    app.get('*', (req,res)=>{
-//        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
-//    })
+   app.get('*', (req,res)=>{
+       res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+   })
 
-// }
+}
  
 // Define the PORT
 const PORT = process.env.PORT || 5000

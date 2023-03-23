@@ -12,11 +12,11 @@ router.post('/upload-image/:prodId', (req,res)=>{
             res.render('index', {msg: err})
         }else{
             // Uncomment if you want to save the 'physical' file to the destination
-        // let newImage = new Image({
-        //      name:req.file.originalname,
-        //      path:'/public/images/'+ req.file.originalname,
-        //      date:Date.now()
-        //  }) 
+        let newImage = new Image({
+             name:req.file.originalname,
+             path:'/public/images/'+ req.file.originalname,
+             date:Date.now()
+         }) 
 
         // Update image name on the product already uploaded
          Product.findOne({_id: prodId}, (err, data)=>{
